@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reduce Method</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>SUM CALCULATOR</h1>
+<div id="total" class="myclass"></div>
+<p id="textid" class="myclass">Write number below to add to total</p>
+<input type="text" class="myclass" id="inputid">
+
+<button type="button" onclick="addNumber()">+</button>
+
+<button type="button" onclick="refresh()">Refresh</button>
+
+<div id="numbers"></div>
+
+
+</body>
+
+<script>
+
+function refresh() {
+
+document.getElementById("inputid").innerHTML = 0 ;
+window.location.reload() ;
+
+}
+
+const numbers = [] ;
+
+function addNumber()  {
+
+const newNumber = document.getElementById("inputid").value;
+resultnumber = parseInt(newNumber);
+numbers.push(resultnumber);
+
+for ( let i=0; i < numbers.length; i++) {
+
+const newp = document.createElement("p");
+document.getElementById("numbers").appendChild(newp);
+newp.innerHTML = numbers[i] + "<br>" ;
+const total = numbers.reduce( (prv, cur) => prv + cur )
+
+document.getElementById("total").innerHTML = "Total is " + total ;
+
+newp.innerHTML = " ";
+}
+
+
+}
+
+</script>
+
+
+
+</html>
